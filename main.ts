@@ -43,9 +43,9 @@ basic.forever(function () {
     Distance = Rangefinder.distance()
     dist_fente = Math.round(Fente * 4.76)
     angle = Math.round(pins.analogReadPin(AnalogPin.P10) * 0.344 - 2.53)
-    acc = SENMPU6050.axisAcceleration(axisXYZ.z, accelSen.range_2_g) * 9.4
-    radio.sendString("0" + ";" + ("" + Distance) + ";" + ("" + dist_fente) + ";" + ("" + acc))
-    led.toggle(4, 0)
+    acc = input.acceleration(Dimension.Y) * 0.0094
+    radio.sendString("" + Temps + ";" + ("" + dist_fente) + ";" + ("" + acc) + ";" + ("" + angle))
+    led.toggle(4, 4)
 })
 basic.forever(function () {
     if (go == true) {
